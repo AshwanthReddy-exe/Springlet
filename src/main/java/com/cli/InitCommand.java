@@ -121,7 +121,7 @@ public class InitCommand implements Runnable {
           .map(Dependency::getId)
           .collect(Collectors.joining(","));
 
-      String bootVersion = service.fetchBootVersion();
+      String bootVersion = "3.2.5";
 
       String url = "https://start.spring.io/starter.zip" +
           "?type=" + type +
