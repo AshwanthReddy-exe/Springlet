@@ -2,7 +2,7 @@ package com.cli;
 
 import picocli.CommandLine;
 
-@CommandLine.Command(name = "spring", mixinStandardHelpOptions = true, version = "1.0", description = "Spring CLI Tool", subcommands = {
+@CommandLine.Command(name = "springlet", mixinStandardHelpOptions = true, version = "1.0", description = "Spring CLI Tool", subcommands = {
     InitCommand.class })
 public class Main implements Runnable {
 
