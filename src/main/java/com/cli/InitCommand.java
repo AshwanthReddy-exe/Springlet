@@ -47,7 +47,7 @@ public class InitCommand implements Runnable {
         build = "maven";
 
       String type = build.equalsIgnoreCase("gradle")
-          ? "gradle-project"
+          ? "gradle-project-groovy"
           : "maven-project";
 
       System.out.print("Java Version (17/21) [17]: ");
