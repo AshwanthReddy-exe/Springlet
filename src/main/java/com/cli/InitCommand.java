@@ -41,6 +41,19 @@ public class InitCommand implements Runnable {
       if (artifact.isEmpty())
         artifact = name;
 
+      System.out.print("Build Tool (maven/gradle) [maven]: ");
+      String build = scanner.nextLine().trim();
+      if (build.isEmpty())
+        build = "maven";
+
+      String type = build.equalsIgnoreCase("gradle")
+          ? "gradle-project"
+          : "maven-project";
+
+      System.out.print("Java Version (17/21) [17]: ");
+      String javaVersion = scanner.nextLine().trim();
+      if (javaVersion.isEmpty())
+        javaVersion = "17";
       // 🔹 Dependencies
       List<Dependency> allDeps = service.fetchDependencies();
       List<Dependency> selected = new ArrayList<>();
@@ -111,15 +124,15 @@ public class InitCommand implements Runnable {
       String bootVersion = service.fetchBootVersion();
 
       String url = "https://start.spring.io/starter.zip" +
-          "?type=maven-project" +
+          "?type=" + type +
           "&language=java" +
           "&bootVersion=" + bootVersion +
           "&baseDir=" + name +
           "&groupId=" + group +
           "&artifactId=" + artifact +
           "&name=" + name +
+          "&javaVersion=" + javaVersion +
           "&dependencies=" + deps;
-
       System.out.println("\n📦 Generating project...");
 
       Path targetDir = Paths.get(name);
